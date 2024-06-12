@@ -13,6 +13,7 @@ html, body {
   width: 100vw;
   overflow-x: hidden;
 }
+
 .animation1 {
   animation: opacity-anim 0.5s ease;
 }

@@ -3,12 +3,8 @@ import Login from "../Login/Login";
 
 function LoginPopup({ setShowLogin }) {
   useEffect(() => {
-    
     document.documentElement.style.overflow = "hidden";
-
-  
     return () => {
-      
       document.documentElement.style.overflow = "auto";
     };
   }, []);

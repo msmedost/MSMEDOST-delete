@@ -13,11 +13,13 @@ import Gallery from './components/Gallery/Gallery'
 import GototopButton from './components/GototopButton/GototopButton'
 import AboutForRoute from './components/RouterComponents/Others/AboutForRoute'
 import BecomeMember from './components/BecomeMember/BecomeMember'
+// import MobileSidebar from './components/MobileSidebar/MobileSidebar'
 
 
 function App() {
 const location = useLocation()
 const navigate = useNavigate()
+// const [isOpen, setIsOpen] = useState(false)
 
   const ScrollToTop=()=>{
     const { pathname } = useLocation();
@@ -45,10 +47,6 @@ const navigate = useNavigate()
     const handleAboutClick = () => {
       if (location.pathname !== '/') {
         navigate("/about")  
-      }else{
-        console.log(
-          "path problem bro"
-        )
       }
     };
 
@@ -57,9 +55,9 @@ const navigate = useNavigate()
     {showLogin?<LoginPopup setShowLogin={setShowLogin}/>:<></>}
      {showMemberRegGuide? <BecomeMember setShowMemberRegGuide={setShowMemberRegGuide}/> : <></>}
      <div>
-  
-      <Header setShowLogin={setShowLogin} setShowMemberRegGuide={setShowMemberRegGuide} logoGotoTopOrHome={logoGotoTopOrHome} handleAboutClick={handleAboutClick}/>
+      <Header setShowLogin={setShowLogin} setShowMemberRegGuide={setShowMemberRegGuide} logoGotoTopOrHome={logoGotoTopOrHome} handleAboutClick={handleAboutClick} />
       <FixedHeader setShowLogin={setShowLogin} setShowMemberRegGuide={setShowMemberRegGuide} logoGotoTopOrHome={logoGotoTopOrHome} handleAboutClick={handleAboutClick}/>
+      {/* <MobileSidebar isOpen={isOpen}  setIsOpen={setIsOpen}/> */}
       <Routes>
         <Route path='/' element={<HomePage />}/>
         <Route path='/contact' element={<Contact />}/>
