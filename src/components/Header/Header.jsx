@@ -7,23 +7,13 @@ import Hamburger from 'hamburger-react'
 import { CgProfile } from "react-icons/cg";
 import { useEffect, useState } from 'react'
 import { Link as ScrollLink, Button, Element, Events, animateScroll as scroll, scrollSpy } from 'react-scroll';
-// import Others from '../RouterComponents/Others/Others'
 
 
-function Header({setShowLogin, setShowMemberRegGuide}) {
-  const location = useLocation()
-  const navigate = useNavigate()
+
+function Header({setShowLogin, setShowMemberRegGuide, logoGotoTopOrHome,handleAboutClick}) {
+
   const [isOpen, setIsOpen] = useState(false)
 
-  const handleAboutClick = () => {
-    if (location.pathname !== '/') {
-      navigate("/about")
-      
-    } 
-  };
-
-
-  
   return (
     <>
     
@@ -57,10 +47,10 @@ function Header({setShowLogin, setShowMemberRegGuide}) {
         </div>
        
         <div className=' flex justify-around items-center h-20 bg-white bg-opacity-90'>
-          <Link to="/"><img src={logo} alt="" className=' w-40'/></Link>
+          <img onClick={logoGotoTopOrHome} src={logo} alt="" className=' w-40 cursor-pointer'/>
           <div>
             <ul className=' flex gap-5 lg2:hidden'>
-              <Link to="/"><li>Home</li></Link>
+              <button onClick={logoGotoTopOrHome}>Home</button>
               <ScrollLink to="about-section" smooth={true} duration={800}><li className=' cursor-pointer' onClick={handleAboutClick}>About Us</li></ScrollLink>
               <Link to="/atithi"><li>Join as Atithi</li></Link>
               <Link to="/contact"><li>Contact Us</li></Link>

@@ -3,6 +3,7 @@ import "./ServicesAndTeam.css";
 import { firstRow, secondRow, thirdRow, fourthRow } from "./teamImages";
 import { useEffect, useRef, useState } from "react";
 
+
 import Aos from "aos";
 import "aos/dist/aos.css";
 

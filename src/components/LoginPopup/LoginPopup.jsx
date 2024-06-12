@@ -1,14 +1,17 @@
-
-
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import Login from "../Login/Login";
 
 function LoginPopup({ setShowLogin }) {
-  // const [isLoginPage, setIsLoginPage] = useState(true);
+  useEffect(() => {
+    
+    document.documentElement.style.overflow = "hidden";
 
-  // const toggleLoginToSignUp = () => {
-  //   setIsLoginPage(prev => !prev);
-  // };
+  
+    return () => {
+      
+      document.documentElement.style.overflow = "auto";
+    };
+  }, []);
 
   return (
     <div className="animation1 w-screen h-screen bg-black bg-opacity-80 fixed flex items-center justify-center sm:px-4 z-50">
@@ -19,21 +22,10 @@ function LoginPopup({ setShowLogin }) {
         >
           X
         </button>
-        <Login setShowLogin={setShowLogin}/>
-        {/* {isLoginPage ? (
-          <Login setShowLogin={setShowLogin}/>
-        ) : (
-          <>
-            <p>This is registration Page</p>
-          </>
-        )} */}
-        {/* <p onClick={toggleLoginToSignUp}>
-          {isLoginPage ? "Register" : "Click to login"}
-        </p> */}
+        <Login setShowLogin={setShowLogin} />
       </div>
     </div>
   );
 }
 
 export default LoginPopup;
-

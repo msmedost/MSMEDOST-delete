@@ -12,14 +12,7 @@ const Faq = () => {
     Aos.init({ duration: 1000, offset: 50 });
     
   }, []);
-  // const [isOpen, setIsOpen] = useState(false);
-  // const [answerHeight, setAnswerHeight] = useState("0px");
-  // const answerRef = useRef(null);
 
-  // const toggleOpen = () => {
-  //   setIsOpen(!isOpen);
-  //   setAnswerHeight(isOpen ? "0px" : `${answerRef.current.scrollHeight}px`);
-  // };
   const [isDarkMode, setDarkMode] = useState(false);
 
   const toggleDarkMode = () => {
@@ -30,19 +23,37 @@ const Faq = () => {
   const [answerHeights, setAnswerHeights] = useState(questionAnswer.map(() => "0px"));
   const answerRefs = questionAnswer.map(() => useRef(null));
 
+
+// for keep open other answers while open a new one
+
+  // const toggleOpen = (index) => {
+  //   setOpenStates((prevOpenStates) => {
+  //     const newOpenStates = [...prevOpenStates];
+  //     newOpenStates[index] = !newOpenStates[index];
+  //     return newOpenStates;
+  //   });
+  //   setAnswerHeights((prevAnswerHeights) => {
+  //     const newAnswerHeights = [...prevAnswerHeights];
+  //     newAnswerHeights[index] = newAnswerHeights[index] === "0px" ? `${answerRefs[index].current.scrollHeight}px` : "0px";
+  //     return newAnswerHeights;
+  //   });
+
+  // }
+
+
   const toggleOpen = (index) => {
     setOpenStates((prevOpenStates) => {
-      const newOpenStates = [...prevOpenStates];
-      newOpenStates[index] = !newOpenStates[index];
-      return newOpenStates;
+      return prevOpenStates.map((state, i) => i === index ? !state : false);
     });
+  
     setAnswerHeights((prevAnswerHeights) => {
-      const newAnswerHeights = [...prevAnswerHeights];
-      newAnswerHeights[index] = newAnswerHeights[index] === "0px" ? `${answerRefs[index].current.scrollHeight}px` : "0px";
-      return newAnswerHeights;
+      return prevAnswerHeights.map((height, i) => i === index ? 
+        (height === "0px" ? `${answerRefs[index].current.scrollHeight}px` : "0px") : 
+        "0px"
+      );
     });
-
   }
+  
 
   return (
     <>
