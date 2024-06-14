@@ -57,7 +57,7 @@ const Faq = () => {
 
   return (
     <>
-    <div className={` w-screen p-4 px-44 md:px-2 transition-all duration-500 ${isDarkMode ? " bg-gray-700 text-white" : ""}`}>
+    <div className={` w-screen p-4 px-44 2xl:px-10 md:px-2 transition-all duration-500 ${isDarkMode ? " bg-gray-700 text-white" : ""}`}>
       <h1 className=" text-center text-2xl font-semibold">FREQUENTLY ASKED QUESTIONS</h1>
       <div className=" w-full flex justify-center items-center my-4">
         <DarkModeSwitch className=" text-center float-right"
@@ -67,7 +67,7 @@ const Faq = () => {
       </div>
       {questionAnswer.map((item, index) => (
         <div data-aos="fade-up" key={index}>
-  <div className=" flex justify-between items-center rounded cursor-pointer mt-4 border-b-[0.5px] pb-4 border-gray-200" onClick={() => toggleOpen(index)}>
+  <div className=" flex justify-between items-center rounded cursor-pointer mt-4 border-b-[0.5px] pb-4 xl:px-6 border-gray-200" onClick={() => toggleOpen(index)}>
     <span className={` pt-5 text-gray-600 text-xl hover:text-blue-500 transition-all duration-300 ${isDarkMode ? " text-slate-200 hover:text-slate-400" : ""}`}>{item.question}</span>
     <IoIosArrowDown className={` transition-all duration-300 ${openStates[index] ? ' rotate-180' : ' rotate-0'} text-3xl`} />
   
