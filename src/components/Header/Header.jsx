@@ -6,11 +6,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Hamburger from 'hamburger-react'
 import { CgProfile } from "react-icons/cg";
 import { useEffect, useState } from 'react'
-import { Link as ScrollLink, Button, Element, Events, animateScroll as scroll, scrollSpy } from 'react-scroll';
+import { Link as ScrollLink } from 'react-scroll';
 
 
 
-function Header({setShowLogin, setShowMemberRegGuide, logoGotoTopOrHome,handleAboutClick}) {
+function Header({setShowLogin, setShowMemberRegGuide, logoGotoTopOrHome,handleAboutClick,gotoFaqs}) {
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -50,7 +50,7 @@ function Header({setShowLogin, setShowMemberRegGuide, logoGotoTopOrHome,handleAb
                 <a href="https://www.instagram.com/msmedost/" target='_blank'><FontAwesomeIcon icon={faInstagram} /></a>
                 <a href="https://www.linkedin.com/company/msmedost/" target='_blank'><FontAwesomeIcon icon={faLinkedin} /></a>
                 </div>
-                <Link><button className=' bg-gray-300 text-black rounded-md p-1 transition-all duration-500 text-sm hover:bg-gray-200 md:hidden'>FAQs</button></Link>
+                <ScrollLink to='faq-section' smooth={true} duration={800}><button onClick={gotoFaqs} className=' bg-gray-300 text-black rounded-md p-1 transition-all duration-500 text-sm hover:bg-gray-200 md:hidden'>FAQs</button></ScrollLink>
                 <button className=' bg-gray-300 text-black rounded-md p-1 transition-all duration-500 text-sm hover:bg-gray-200 md:hidden'>Testimonials</button>
             </div>
         </div>

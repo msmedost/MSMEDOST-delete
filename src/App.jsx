@@ -13,6 +13,9 @@ import Gallery from './components/Gallery/Gallery'
 import GototopButton from './components/GototopButton/GototopButton'
 import AboutForRoute from './components/RouterComponents/Others/AboutForRoute'
 import BecomeMember from './components/BecomeMember/BecomeMember'
+import RegistrationForm from './components/BecomeMember/RegistrationForm'
+import FranchiseRegistration from './components/RouterComponents/FranchiseRegistration/FranchiseRegistration'
+import ErrorPage from './components/RouterComponents/ErrorPage/ErrorPage'
 // import MobileSidebar from './components/MobileSidebar/MobileSidebar'
 
 
@@ -43,6 +46,11 @@ const navigate = useNavigate()
         navigate("/")
       }
     }
+  const gotoFaqs = () => {
+    if(location.pathname !== "/"){
+        navigate("/faqs")
+      }
+    }
 
     const handleAboutClick = () => {
       if (location.pathname !== '/') {
@@ -55,7 +63,7 @@ const navigate = useNavigate()
     {showLogin?<LoginPopup setShowLogin={setShowLogin}/>:<></>}
      {showMemberRegGuide? <BecomeMember setShowMemberRegGuide={setShowMemberRegGuide}/> : <></>}
      <div>
-      <Header setShowLogin={setShowLogin} setShowMemberRegGuide={setShowMemberRegGuide} logoGotoTopOrHome={logoGotoTopOrHome} handleAboutClick={handleAboutClick} />
+      <Header setShowLogin={setShowLogin} setShowMemberRegGuide={setShowMemberRegGuide} logoGotoTopOrHome={logoGotoTopOrHome} handleAboutClick={handleAboutClick} gotoFaqs={gotoFaqs} />
       <FixedHeader setShowLogin={setShowLogin} setShowMemberRegGuide={setShowMemberRegGuide} logoGotoTopOrHome={logoGotoTopOrHome} handleAboutClick={handleAboutClick}/>
       {/* <MobileSidebar isOpen={isOpen}  setIsOpen={setIsOpen}/> */}
       <Routes>
@@ -64,8 +72,11 @@ const navigate = useNavigate()
         <Route path='/atithi' element={<JoinAsAtithi />}/>
         <Route path='/gallery' element={<Gallery />}/>
         <Route path="/about" element={<AboutForRoute />}/>
+        <Route path='/register' element={<RegistrationForm />}/>
+        <Route path='/franchise' element={<FranchiseRegistration />}/>
+        <Route path='*' element={<ErrorPage logoGotoTopOrHome={logoGotoTopOrHome}/>}/>
         </Routes>
-      <Footer />
+      <Footer handleAboutClick={handleAboutClick} logoGotoTopOrHome={logoGotoTopOrHome}/>
      </div>
      <GototopButton />
      <ScrollToTop />

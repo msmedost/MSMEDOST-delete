@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
 import logo from '../../assets/MSME_logo.png'
 import './Footer.css'
+import { Link as ScrollLink } from 'react-scroll';
 
-function Footer() {
+function Footer({handleAboutClick,logoGotoTopOrHome}) {
   return (
 
     <div className='footer'>
@@ -15,20 +16,20 @@ function Footer() {
             </div>
             <div className=' z-10'>
                 <h1 className=' text-2xl font-medium mb-5 text-gray-200 '>Useful Links</h1>
-                <ul className=' flex flex-col gap-4'>
-                    <Link to="/"><li><span className=' mr-3 text-xl'>{">"}</span>Home</li></Link>
-                    <li><span className=' mr-3 text-xl'>{">"}</span>About Us</li>
+                <ul className=' flex flex-col gap-4 items-start'>
+                    <button onClick={logoGotoTopOrHome}><span className=' mr-3 text-xl'>{">"}</span>Home</button>
+                    <ScrollLink to="about-section" smooth={true} duration={800}><button onClick={handleAboutClick}><span className=' mr-3 text-xl'>{">"}</span>About Us</button></ScrollLink>
                     <li><span className=' mr-3 text-xl'>{">"}</span>Service</li>
                     <Link to="/gallery"><li><span className=' mr-3 text-xl'>{">"}</span>Gallery</li></Link>
                 </ul>
             </div>
-            <div>
+            <div className=' z-10'>
                 <h1 className=' text-2xl font-medium mb-5 text-gray-200'>Our Services</h1>
                 <ul className=' flex flex-col gap-4'>
-                    <li><span className=' mr-3 text-xl'>{">"}</span>Register As an Atihti</li>
+                    <Link to="/atithi"><li><span className=' mr-3 text-xl'>{">"}</span>Register As an Atihti</li></Link>
                     <li><span className=' mr-3 text-xl'>{">"}</span>Become a MSME DOST</li>
-                    <li><span className=' mr-3 text-xl'>{">"}</span>Franchise Registration</li>
-                    <li><span className=' mr-3 text-xl'>{">"}</span>Support</li>
+                    <Link to="/franchise"><li><span className=' mr-3 text-xl'>{">"}</span>Franchise Registration</li></Link>
+                    <Link to="/contact"><li><span className=' mr-3 text-xl'>{">"}</span>Support</li></Link>
                 </ul>
           </div>
       </div>

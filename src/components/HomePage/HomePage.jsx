@@ -19,7 +19,10 @@ function HomePage() {
       <WhyToJoin />
 
       <ServicesAndTeam />
+      
+      <section id="faq-section">
       <Faq />
+      </section>
       
     </div>
   )
