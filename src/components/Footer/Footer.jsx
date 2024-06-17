@@ -3,7 +3,8 @@ import logo from '../../assets/MSME_logo.png'
 import './Footer.css'
 import { Link as ScrollLink } from 'react-scroll';
 
-function Footer({handleAboutClick,logoGotoTopOrHome}) {
+
+function Footer({handleAboutClick,logoGotoTopOrHome,gotoWhytojoin}) {
   return (
 
     <div className='footer'>
@@ -16,12 +17,12 @@ function Footer({handleAboutClick,logoGotoTopOrHome}) {
             </div>
             <div className=' z-10'>
                 <h1 className=' text-2xl font-medium mb-5 text-gray-200 '>Useful Links</h1>
-                <ul className=' flex flex-col gap-4 items-start'>
+                <div className=' flex flex-col gap-4 items-start'>
                     <button onClick={logoGotoTopOrHome}><span className=' mr-3 text-xl'>{">"}</span>Home</button>
                     <ScrollLink to="about-section" smooth={true} duration={800}><button onClick={handleAboutClick}><span className=' mr-3 text-xl'>{">"}</span>About Us</button></ScrollLink>
-                    <li><span className=' mr-3 text-xl'>{">"}</span>Service</li>
-                    <Link to="/gallery"><li><span className=' mr-3 text-xl'>{">"}</span>Gallery</li></Link>
-                </ul>
+                    <ScrollLink to='whytojoin' smooth={true} duration={800}><button onClick={gotoWhytojoin}><span className=' mr-3 text-xl'>{">"}</span>Services</button></ScrollLink>
+                    <Link to="/gallery"><button><span className=' mr-3 text-xl'>{">"}</span>Gallery</button></Link>
+                </div>
             </div>
             <div className=' z-10'>
                 <h1 className=' text-2xl font-medium mb-5 text-gray-200'>Our Services</h1>

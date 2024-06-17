@@ -25,7 +25,7 @@ function ServicesAndTeam() {
   }, [selected]);
   
   return (
-    <div data-aos="fade-up" className=" bg-gradient-to-r from-purple-50 to-blue-50">
+    <div data-aos="fade-up" className=" bg-gradient-to-r from-purple-50 to-blue-50 pb-16">
       <div className=" p-4 mt-10 text-center">
         <h1 className=" text-2xl font-bold text-center mb-4">OUR TEAM</h1>
         <p>

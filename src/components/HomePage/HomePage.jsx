@@ -4,6 +4,7 @@ import Faq from "./Faq/Faq"
 import Hero from "./Hero/Hero"
 import WhyToJoin from "./WhyToJoin/WhyToJoin"
 import React, { useEffect } from 'react';
+import Testimonial from "../Testimonial/Testimonial"
 
 function HomePage() {
  
@@ -16,9 +17,13 @@ function HomePage() {
       <About />
         </section>
   
+    <section id="whytojoin">
       <WhyToJoin />
+    </section>
 
       <ServicesAndTeam />
+
+      <Testimonial />
       
       <section id="faq-section">
       <Faq />

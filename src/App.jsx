@@ -16,6 +16,10 @@ import BecomeMember from './components/BecomeMember/BecomeMember'
 import RegistrationForm from './components/BecomeMember/RegistrationForm'
 import FranchiseRegistration from './components/RouterComponents/FranchiseRegistration/FranchiseRegistration'
 import ErrorPage from './components/RouterComponents/ErrorPage/ErrorPage'
+import WhyToJoinForRoute from './components/RouterComponents/Others/WhyToJoinForRoute'
+import FaqsForRoute from './components/RouterComponents/Others/FaqsForRoute'
+
+
 // import MobileSidebar from './components/MobileSidebar/MobileSidebar'
 
 
@@ -57,6 +61,11 @@ const navigate = useNavigate()
         navigate("/about")  
       }
     };
+    const gotoWhytojoin = () => {
+      if (location.pathname !== '/') {
+        navigate("/services")  
+      }
+    };
 
   return (
     <>
@@ -65,7 +74,8 @@ const navigate = useNavigate()
      <div>
       <Header setShowLogin={setShowLogin} setShowMemberRegGuide={setShowMemberRegGuide} logoGotoTopOrHome={logoGotoTopOrHome} handleAboutClick={handleAboutClick} gotoFaqs={gotoFaqs} />
       <FixedHeader setShowLogin={setShowLogin} setShowMemberRegGuide={setShowMemberRegGuide} logoGotoTopOrHome={logoGotoTopOrHome} handleAboutClick={handleAboutClick}/>
-      {/* <MobileSidebar isOpen={isOpen}  setIsOpen={setIsOpen}/> */}
+
+
       <Routes>
         <Route path='/' element={<HomePage />}/>
         <Route path='/contact' element={<Contact />}/>
@@ -74,9 +84,13 @@ const navigate = useNavigate()
         <Route path="/about" element={<AboutForRoute />}/>
         <Route path='/register' element={<RegistrationForm />}/>
         <Route path='/franchise' element={<FranchiseRegistration />}/>
+        <Route path='/services' element={<WhyToJoinForRoute />}/>
+        <Route path='/faqs' element={<FaqsForRoute/>}/>
+       
+        
         <Route path='*' element={<ErrorPage logoGotoTopOrHome={logoGotoTopOrHome}/>}/>
         </Routes>
-      <Footer handleAboutClick={handleAboutClick} logoGotoTopOrHome={logoGotoTopOrHome}/>
+      <Footer handleAboutClick={handleAboutClick} logoGotoTopOrHome={logoGotoTopOrHome} gotoWhytojoin={gotoWhytojoin}/>
      </div>
      <GototopButton />
      <ScrollToTop />
