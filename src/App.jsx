@@ -2,7 +2,7 @@ import './App.css'
 import FixedHeader from './components/FixedHeader/FixedHeader'
 import Footer from './components/Footer/Footer'
 import Header from './components/Header/Header'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import LoginPopup from './components/LoginPopup/LoginPopup'
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import HomePage from './components/HomePage/HomePage'
@@ -20,6 +20,7 @@ import WhyToJoinForRoute from './components/RouterComponents/Others/WhyToJoinFor
 import FaqsForRoute from './components/RouterComponents/Others/FaqsForRoute'
 
 
+
 // import MobileSidebar from './components/MobileSidebar/MobileSidebar'
 
 
@@ -30,10 +31,18 @@ const navigate = useNavigate()
 
   const ScrollToTop=()=>{
     const { pathname } = useLocation();
-  
+    const prevPathnameRef = useRef('');
+
     useEffect(() => {
-      window.scrollTo(0, 0);
+        if (pathname !== prevPathnameRef.current) {
+            window.scrollTo(0, 0);
+            prevPathnameRef.current = pathname;
+        }
     }, [pathname]);
+
+    return null; 
+  
+
   
   }
   const [showLogin,setShowLogin] = useState(false)
@@ -67,10 +76,63 @@ const navigate = useNavigate()
       }
     };
 
+    function generateRandomCharacter() {
+      const characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._~";
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      return characters[randomIndex];
+    }
+    
+    function generateRandomArray(length) {
+      let array = [];
+      for (let i = 0; i < length; i++) {
+        array.push(generateRandomCharacter());
+      }
+      return array;
+    }
+    
+    const random = generateRandomArray(100);
+
+    const [randomState] = useState(random.join(""))
+
+
+    // for captcha
+
+    const [captcha, setCaptcha] = useState("");
+    const [captchaError, setCaptchaError] = useState("");
+    const timeoutRef = useRef(null)
+
+    const handleCaptchaChange = (token) => {
+      console.log("the token is :", token);
+      setCaptcha(token);
+  
+      if (token && captchaError) {
+        setCaptchaError("");
+      }
+    };
+  
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+  
+      if (!captcha) {
+        setCaptchaError("Please submit the Captcha");
+  
+        if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current);
+        }
+        timeoutRef.current = setTimeout(() => {
+          setCaptchaError("");
+          timeoutRef.current = null;
+        }, 3000);
+        
+        return;
+      }
+      console.log("it is submitted");
+    };
+
   return (
     <>
     {showLogin?<LoginPopup setShowLogin={setShowLogin}/>:<></>}
-     {showMemberRegGuide? <BecomeMember setShowMemberRegGuide={setShowMemberRegGuide}/> : <></>}
+     {showMemberRegGuide? <BecomeMember setShowMemberRegGuide={setShowMemberRegGuide} randomState={randomState}/> : <></>}
      <div>
       <Header setShowLogin={setShowLogin} setShowMemberRegGuide={setShowMemberRegGuide} logoGotoTopOrHome={logoGotoTopOrHome} handleAboutClick={handleAboutClick} gotoFaqs={gotoFaqs} />
       <FixedHeader setShowLogin={setShowLogin} setShowMemberRegGuide={setShowMemberRegGuide} logoGotoTopOrHome={logoGotoTopOrHome} handleAboutClick={handleAboutClick}/>
@@ -82,10 +144,11 @@ const navigate = useNavigate()
         <Route path='/atithi' element={<JoinAsAtithi />}/>
         <Route path='/gallery' element={<Gallery />}/>
         <Route path="/about" element={<AboutForRoute />}/>
-        <Route path='/register' element={<RegistrationForm />}/>
-        <Route path='/franchise' element={<FranchiseRegistration />}/>
+        <Route path={`/register/${randomState}`} element={<RegistrationForm/>}/>
+        <Route path='/franchise' element={<FranchiseRegistration handleCaptchaChange={handleCaptchaChange} handleSubmit={handleSubmit} captchaError={captchaError}/>}/>
         <Route path='/services' element={<WhyToJoinForRoute />}/>
         <Route path='/faqs' element={<FaqsForRoute/>}/>
+    
        
         
         <Route path='*' element={<ErrorPage logoGotoTopOrHome={logoGotoTopOrHome}/>}/>

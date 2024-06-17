@@ -1,38 +1,11 @@
 import React, { useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
-function FranchiseRegistration() {
-  const [captcha, setCaptcha] = useState("");
-  const [captchaError, setCaptchaError] = useState("");
-  const timeoutRef = useRef(null)
+function FranchiseRegistration({handleSubmit,handleCaptchaChange,captchaError}) {
 
-  const handleCaptchaChange = (token) => {
-    console.log("the token is :", token);
-    setCaptcha(token);
 
-    if (token && captchaError) {
-      setCaptchaError("");
-    }
-  };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    if (!captcha) {
-      setCaptchaError("Please submit the Captcha");
-
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-      timeoutRef.current = setTimeout(() => {
-        setCaptchaError("");
-        timeoutRef.current = null;
-      }, 3000);
-      
-      return;
-    }
-    console.log("it is submitted");
-  };
+  
   return (
     <div className=" w-screen flex justify-center items-center flex-col bg-gray-100">
       <img

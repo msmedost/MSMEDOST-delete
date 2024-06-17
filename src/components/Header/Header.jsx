@@ -23,6 +23,12 @@ function Header({setShowLogin, setShowMemberRegGuide, logoGotoTopOrHome,handleAb
     handleAboutClick()
     setIsOpen(false)
   }
+
+  const loginButton =(e)=>{
+    e.preventDefault();
+        setShowLogin(true); 
+  }
+
   return (
     <>
     
@@ -64,7 +70,7 @@ function Header({setShowLogin, setShowMemberRegGuide, logoGotoTopOrHome,handleAb
               <Link to="/atithi"><li>Join as Atithi</li></Link>
               <Link to="/contact"><li>Contact Us</li></Link>
               <button onClick={()=>setShowMemberRegGuide(true)}>Register Now</button>
-              <button onClick={()=>setShowLogin(true)}><FontAwesomeIcon icon={faUser} className=' px-2'/>Login</button>
+              <button onClick={loginButton}><FontAwesomeIcon icon={faUser} className=' px-2'/>Login</button>
             </ul>
           </div>
           <div className=' hidden lg2:block text-4xl'><CgProfile onClick={()=>setShowLogin(true)}/></div>

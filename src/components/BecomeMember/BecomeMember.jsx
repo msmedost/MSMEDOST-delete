@@ -3,8 +3,9 @@ import "./BecomeMember.css";
 import { FaPlay } from "react-icons/fa";
 import { Collapse, Button } from "@material-tailwind/react";
 import { HiMiniXMark } from "react-icons/hi2";
+import { Link } from "react-router-dom";
 
-function BecomeMember({ setShowMemberRegGuide }) {
+function BecomeMember({ setShowMemberRegGuide,randomState }) {
   useEffect(() => {
     document.documentElement.style.overflow = "hidden";
     return () => (document.documentElement.style.overflow = "auto");
@@ -106,7 +107,7 @@ function BecomeMember({ setShowMemberRegGuide }) {
           :(<div></div>)}
 
           <div className=" m-8">
-            <Button>Continue to Register</Button>
+            <Link to={`/register/${randomState}`}><Button onClick={()=>setShowMemberRegGuide(false)}>Continue to Register</Button></Link>
           </div>
         </div>
       </div>
