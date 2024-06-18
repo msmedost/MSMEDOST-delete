@@ -27,7 +27,7 @@ function WhyToJoin() {
         </p>
       </div>
       <div className=" flex justify-center items-center gap-4 mb-4 flex-wrap px-44 2xl:px-10 sm:px-2">
-      <div data-aos="fade-up" className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 duration-100 cursor-default hover:shadow-2xl hover:bg-white h-[500px] hover:transition-all">
+      <div data-aos="fade-up" className="max-w-sm bg-white border border-gray-200 rounded-lg shadow duration-100 cursor-default hover:shadow-2xl hover:bg-white h-[500px] hover:transition-all">
           <div className=" p-4 overflow-hidden h-64">
             <img
               className=" h-full  w-full transition-all duration-300 rounded-t-lg object-cover"

@@ -6,6 +6,7 @@ import WhyToJoin from "./WhyToJoin/WhyToJoin"
 import React, { useEffect } from 'react';
 import Testimonial from "../Testimonial/Testimonial"
 
+
 function HomePage() {
  
   return (
@@ -28,6 +29,7 @@ function HomePage() {
       <section id="faq-section">
       <Faq />
       </section>
+
       
     </div>
   )
