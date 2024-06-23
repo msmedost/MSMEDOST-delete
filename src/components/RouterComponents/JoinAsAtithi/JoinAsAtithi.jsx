@@ -5,9 +5,10 @@ import businessCategory from "../../BusinessCategoryArray";
 import { Select, Option, Button } from "@material-tailwind/react";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import ReCAPTCHA from "react-google-recaptcha";
 
 
-function JoinAsAtithi() {
+function JoinAsAtithi({handleCaptchaChange, captchaError, handleSubmit}) {
   useEffect(() => {
     Aos.init({ duration: 1000 });
   }, []);
@@ -46,10 +47,19 @@ function JoinAsAtithi() {
         />
    
       <h1 className=" text-center text-3xl font-medium mb-10">ABOUT MSME DOST</h1>
-      <div data-aos="fade-up" className=" flex justify-center gap-10 p-4 lg:flex-col">
+      <div className=" w-full flex justify-center items-center mb-4 px-8">
+        <p className=" w-4/5 sm:w-full">MSME DOST is a SHUDH SWADESHI Business Networking Forum for new Bharat; it's a dynamic ecosystem designed to empower Micro, Small, and Medium Enterprises (MSMEs) and foster collaborative growth. It has been formed with a vision to bridge the gap between MSMEs and opportunities, MSME DOST provides a supportive and enriching environment where businesses can grow, and create lasting partnerships with the core values of integrity, inclusivity, and transparency, ensuring that every member feels welcomed and valued.
+        
+        MSME DOST believes in the mantra "SERVING COMMUNITY WITH RESPONSIBILITY" MSMEDost mantra is 3R's Rating, Review & Repeat.
+        
+        MSME DOST organizes structured meetings of DOSTS in both PHYSICAL & DIGITAL modes, a perfect mix of Tradition with Technology, know each other, their Businesses, exchange Business, ideas, and best practices and pass Business Opportunities in their network for growth & betterment of DOSTS, a win-win situation for all concerned.
+        </p>
+      </div>
+      <div data-aos="fade-up" className=" flex justify-center items-center gap-10 p-4 py-8 lg:flex-col">
         <form
           className=" bg-white shadow-xl flex gap-4 flex-col p-8 rounded-md"
           action=""
+          onSubmit={handleSubmit}
         >
           <div className=" flex gap-4 sm:flex-col">
   <div className="relative w-full min-w-[200px] h-10">
@@ -161,7 +171,19 @@ function JoinAsAtithi() {
             value={introducerMobileValue}
             onChange={handleIntroducerMobile}/> */}
           </div>
-          <Button>Submit</Button>
+          <div className=" w-full flex justify-center items-center relative">
+          <div
+                  className={`absolute overflow-hidden -top-14 transition-all duration-200 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-200 dark:bg-gray-800 dark:text-red-600 opacity-0 scale-0 ${captchaError !== "" ? "opacity-100 scale-[100%]":""}`}
+                  role="alert"
+                >
+                  {captchaError}
+                </div>
+            <ReCAPTCHA
+                  sitekey="6LdGVPkpAAAAAK_gm2lWwK1-YEdnxLljw_Ga_j_1"
+                  onChange={handleCaptchaChange}
+                />
+          </div>
+          <button className="bg-black text-white px-4 py-2 rounded-lg transition-all duration-300 hover:opacity-80">Submit</button>
         </form>
 
         <div className=" bg-white p-6 w-fit h-fit rounded-md shadow-xl lg:w-full">

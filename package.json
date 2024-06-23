@@ -17,6 +17,8 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@material-tailwind/react": "^2.1.9",
     "aos": "^2.3.4",
+    "axios": "^1.7.2",
+    "formik": "^2.4.6",
     "framer-motion": "^11.2.10",
     "hamburger-react": "^2.5.1",
     "react": "^18.2.0",

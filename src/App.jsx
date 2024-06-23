@@ -2,7 +2,7 @@ import './App.css'
 import FixedHeader from './components/FixedHeader/FixedHeader'
 import Footer from './components/Footer/Footer'
 import Header from './components/Header/Header'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import LoginPopup from './components/LoginPopup/LoginPopup'
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import HomePage from './components/HomePage/HomePage'
@@ -13,7 +13,8 @@ import Gallery from './components/Gallery/Gallery'
 import GototopButton from './components/GototopButton/GototopButton'
 import AboutForRoute from './components/RouterComponents/Others/AboutForRoute'
 import BecomeMember from './components/BecomeMember/BecomeMember'
-import RegistrationForm from './components/BecomeMember/RegistrationForm'
+// import RegistrationForm from './components/BecomeMember/RegistrationForm'
+import Registration from './components/BecomeMember/Registration'
 import FranchiseRegistration from './components/RouterComponents/FranchiseRegistration/FranchiseRegistration'
 import ErrorPage from './components/RouterComponents/ErrorPage/ErrorPage'
 import WhyToJoinForRoute from './components/RouterComponents/Others/WhyToJoinForRoute'
@@ -31,50 +32,46 @@ const navigate = useNavigate()
 
   const ScrollToTop=()=>{
     const { pathname } = useLocation();
-    const prevPathnameRef = useRef('');
 
-    useEffect(() => {
-        if (pathname !== prevPathnameRef.current) {
-            window.scrollTo(0, 0);
-            prevPathnameRef.current = pathname;
-        }
+    useLayoutEffect(() => {
+      window.scrollTo(0, 0);
     }, [pathname]);
-
-    return null; 
   
-
-  
+    return null;
   }
   const [showLogin,setShowLogin] = useState(false)
   const[showMemberRegGuide, setShowMemberRegGuide] = useState(false)
   
 
   const logoGotoTopOrHome = () => {
-    if(location.pathname === "/"){
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        })
-      }else{
-        navigate("/")
-      }
+    if (location.pathname === "/") {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    } else {
+      navigate("/");
     }
+  };
+  
   const gotoFaqs = () => {
-    if(location.pathname !== "/"){
-        navigate("/faqs")
-      }
+    if (location.pathname !== "/faqs") {
+      navigate("/faqs");
     }
-
-    const handleAboutClick = () => {
-      if (location.pathname !== '/') {
-        navigate("/about")  
-      }
-    };
-    const gotoWhytojoin = () => {
-      if (location.pathname !== '/') {
-        navigate("/services")  
-      }
-    };
+  };
+  
+  const handleAboutClick = () => {
+    if (location.pathname !== '/about') {
+      navigate("/about");
+    }
+  };
+  
+  const gotoWhytojoin = () => {
+    if (location.pathname !== '/services') {
+      navigate("/services");
+    }
+  };
+  
 
     function generateRandomCharacter() {
       const characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._~";
@@ -137,14 +134,15 @@ const navigate = useNavigate()
       <Header setShowLogin={setShowLogin} setShowMemberRegGuide={setShowMemberRegGuide} logoGotoTopOrHome={logoGotoTopOrHome} handleAboutClick={handleAboutClick} gotoFaqs={gotoFaqs} />
       <FixedHeader setShowLogin={setShowLogin} setShowMemberRegGuide={setShowMemberRegGuide} logoGotoTopOrHome={logoGotoTopOrHome} handleAboutClick={handleAboutClick}/>
 
-
+     <ScrollToTop />
       <Routes>
         <Route path='/' element={<HomePage />}/>
         <Route path='/contact' element={<Contact />}/>
-        <Route path='/atithi' element={<JoinAsAtithi />}/>
+        <Route path='/atithi' element={<JoinAsAtithi handleCaptchaChange={handleCaptchaChange} captchaError={captchaError} handleSubmit={handleSubmit}/>}/>
         <Route path='/gallery' element={<Gallery />}/>
         <Route path="/about" element={<AboutForRoute />}/>
-        <Route path={`/register/${randomState}`} element={<RegistrationForm/>}/>
+        {/* <Route path={`/register/${randomState}`} element={<RegistrationForm/>}/> */}
+        <Route path={`/register/`} element={<Registration/>}/>
         <Route path='/franchise' element={<FranchiseRegistration handleCaptchaChange={handleCaptchaChange} handleSubmit={handleSubmit} captchaError={captchaError}/>}/>
         <Route path='/services' element={<WhyToJoinForRoute />}/>
         <Route path='/faqs' element={<FaqsForRoute/>}/>
@@ -156,7 +154,6 @@ const navigate = useNavigate()
       <Footer handleAboutClick={handleAboutClick} logoGotoTopOrHome={logoGotoTopOrHome} gotoWhytojoin={gotoWhytojoin}/>
      </div>
      <GototopButton />
-     <ScrollToTop />
     </>
   )
 }

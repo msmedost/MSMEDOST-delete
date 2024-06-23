@@ -16,19 +16,28 @@ function RegistrationForm() {
   const inputLength = username.length;
 
   const selectColor = selectLength.value === "Select City" ? "red" : "green";
-  const refNoColor =
+  // const refNoColor = 
     inputLength >= 1 ? "red" : inputLength === 11 ? "green" : "";
 
-  const inputColor =
+  // const inputColor =
     inputLength >= 1 && inputLength < 10
       ? "red"
       : inputLength === 10
       ? "green"
       : "";
-  const inputColor1 =
+  // const inputColor1 =
     inputLength >= 1 ? "red" : inputLength === 10 ? "green" : "";
-  const emailColor =
+  // const emailColor =
     username.includes("@") && username.includes(".") ? "green" : "red";
+
+
+
+      const [test, setTest] =useState("")
+    const handleChange = (e) =>{
+      setTest(e.target.value)
+      console.log(e.target.value)
+
+    }
 
   return (
     <div className=" h-screen w-screen flex justify-center items-center flex-col bg-gray-100">
@@ -40,8 +49,8 @@ function RegistrationForm() {
         {currStep === 1 && (
           <>
             <div className=" flex gap-4 lg2:flex-col">
-              <Select color={selectColor} label="Select City">
-                <Option>Kolkata</Option>
+              <Select value={test} color={selectColor} onChange={(e)=>handleChange(e)} label="Select City">
+                <Option value="Kolkata">Kolkata</Option>
               </Select>
               <Select color={selectColor} label="Select Zone">
                 <Option>South</Option>
@@ -54,20 +63,20 @@ function RegistrationForm() {
               </Select>
               <Input
                 label="Reference No."
-                color={refNoColor}
+                // color={refNoColor}
                 onChange={(e) => setUsername(e.target.value)}
               />
             </div>
             <div className=" flex gap-4 lg2:flex-col">
               <Input
                 label="Email Address"
-                color={emailColor}
+                // color={emailColor}
                 onChange={(e) => setUsername(e.target.value)}
                 type="email"
               />
               <Input
                 label="Full Name"
-                color={inputColor}
+                // color={inputColor}
                 onChange={(e) => setUsername(e.target.value)}
               />
             </div>

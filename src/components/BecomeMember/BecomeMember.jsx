@@ -107,7 +107,8 @@ function BecomeMember({ setShowMemberRegGuide,randomState }) {
           :(<div></div>)}
 
           <div className=" m-8">
-            <Link to={`/register/${randomState}`}><Button onClick={()=>setShowMemberRegGuide(false)}>Continue to Register</Button></Link>
+            {/* <Link to={`/register/${randomState}`}><Button onClick={()=>setShowMemberRegGuide(false)}>Continue to Register</Button></Link> */}
+            <Link to={`/register`}><Button onClick={()=>setShowMemberRegGuide(false)}>Continue to Register</Button></Link>
           </div>
         </div>
       </div>
