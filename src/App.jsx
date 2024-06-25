@@ -55,19 +55,19 @@ const navigate = useNavigate()
   };
   
   const gotoFaqs = () => {
-    if (location.pathname !== "/faqs") {
+    if (location.pathname !== "/") {
       navigate("/faqs");
     }
   };
   
   const handleAboutClick = () => {
-    if (location.pathname !== '/about') {
+    if (location.pathname !== '/') {
       navigate("/about");
     }
   };
   
   const gotoWhytojoin = () => {
-    if (location.pathname !== '/services') {
+    if (location.pathname !== '/') {
       navigate("/services");
     }
   };
