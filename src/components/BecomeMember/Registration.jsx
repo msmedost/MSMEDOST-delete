@@ -106,7 +106,7 @@ const Registration = () => {
       });
 
       const response = await axios.post(
-        "http://localhost:8000/api/register",
+        "https://msmedost.onrender.com/api/register",
         formData,
         {
           headers: {
