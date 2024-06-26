@@ -19,6 +19,7 @@ import FranchiseRegistration from './components/RouterComponents/FranchiseRegist
 import ErrorPage from './components/RouterComponents/ErrorPage/ErrorPage'
 import WhyToJoinForRoute from './components/RouterComponents/Others/WhyToJoinForRoute'
 import FaqsForRoute from './components/RouterComponents/Others/FaqsForRoute'
+import JoinAsAtithiTest from './components/RouterComponents/JoinAsAtithi/JoinAsAtithiTest'
 
 
 
@@ -147,7 +148,7 @@ const navigate = useNavigate()
         <Route path='/services' element={<WhyToJoinForRoute />}/>
         <Route path='/faqs' element={<FaqsForRoute/>}/>
     
-       
+        <Route path='/abc' element={<JoinAsAtithiTest/>}/>
         
         <Route path='*' element={<ErrorPage logoGotoTopOrHome={logoGotoTopOrHome}/>}/>
         </Routes>

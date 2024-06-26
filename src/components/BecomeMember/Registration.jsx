@@ -70,12 +70,12 @@ const Registration = () => {
   };
 
   const [stage, setStage] = useState(1);
-  const [formData, setFormData] = useState({
-    field1: "",
-    field2: "",
-    field3: "",
-    field4: "",
-  });
+  // const [formData, setFormData] = useState({
+  //   field1: "",
+  //   field2: "",
+  //   field3: "",
+  //   field4: "",
+  // });
 
   const handleNext = () => {
     setStage(stage + 1);
@@ -85,12 +85,12 @@ const Registration = () => {
     setStage(stage - 1);
   };
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  // const handleChange = (e) => {
+  //   setFormData({
+  //     ...formData,
+  //     [e.target.name]: e.target.value,
+  //   });
+  // };
 
   const onSubmit = async (values, { setSubmitting }) => {
     try {
